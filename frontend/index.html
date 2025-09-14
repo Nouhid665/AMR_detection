@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextWave - Automatic Modulation Recognition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo" onclick="scrollToSection('hero')"><i class="fas fa-satellite"></i>NextWave</div>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#features">Technology</a></li>
+                    <li><a href="#benefits">Solutions</a></li>
+                    <li><a href="#founders">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Hero Section -->
+<section id="hero" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="fade-in">Automatic Modulation Recognition (AMR) for Waveforms</h1>
+            <p class="fade-in delay-1">
+                NextWave creates smart algorithms that automatically detect and recognize satellite signals, 
+                making ground-to-satellite communication easier and more efficient.
+            </p>
+
+            <!-- Intro Video -->
+            <div class="hero-video fade-in delay-2" style="margin-top:20px; text-align:center;">
+                <video controls width="70%">
+                    <source src="/static/videos/intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#predict" class="btn btn-primary fade-in delay-2">Get Started</a>
+                <a href="#features" class="btn btn-outline fade-in delay-2">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Prediction Section -->
+<section id="predict" class="predict">
+  <div class="container">
+    <h2 class="section-title">Test Modulation Prediction</h2>
+    <p style="text-align: center; color: var(--text-secondary); max-width:800px; margin: 0 auto 20px;">
+      Enter your signal data (2x128 or 128x2) in JSON format and click <strong>Predict</strong>.
+      Example: <code>[[0.1,0.2,...],[0.3,-0.1,...]]</code>
+    </p>
+
+    <form id="predictionForm" class="prediction-form" style="max-width:800px;margin:0 auto;">
+      <div class="form-group">
+        <label for="signalInput">Signal Data (JSON)</label>
+        <textarea id="signalInput" placeholder='Example: [[0.1, 0.2, ...], [0.3, -0.1, ...]]' style="min-height:140px;padding:12px;border-radius:8px;"></textarea>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-top:12px;">
+        <button type="submit" id="predictBtn" class="btn btn-primary">Predict</button>
+        <button type="button" id="exampleBtn" class="btn btn-outline">Load QPSK Example</button>
+      </div>
+    </form>
+
+    <!-- error message (will be populated by JS) -->
+    <p id="predError" style="color:#ff6b6b; text-align:center; margin-top:12px;"></p>
+
+    <div id="predictionResult" class="prediction-result hidden" style="max-width:600px;margin:22px auto;padding:18px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(100,255,218,0.08);">
+      <h3 style="text-align:center;margin-bottom:12px;">Prediction Result</h3>
+      <p style="text-align:center;"><b>Class:</b> <span id="predClass">—</span></p>
+      <p style="text-align:center;"><b>Label:</b> <span id="predLabel">—</span></p>
+      <p style="text-align:center;"><b>Confidence:</b> <span id="predConfidence">—</span></p>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Our Technology</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h3>DVB-S2X Waveform Detection</h3>
+                    <p>Automatic detection and recognition of all DVB-S2X modulation schemes including QPSK, BPSK, 16APSK, 32APSK, and more.</p>
+                </div>
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Smart Channel Adaptation</h3>
+                    <p>Intelligent modulation scheme selection based on channel conditions and signal characteristics.</p>
+                </div>
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Low Complexity Algorithm</h3>
+                    <p>Optimized AMR algorithms that require minimal hardware resources while maintaining high accuracy.</p>
+                </div>
+                <div class="feature-card fade-in delay-3">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Universal Detection Engine</h3>
+                    <p>Single algorithm solution that handles all current DVB-S2X standards and future waveforms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Section -->
+    <section class="challenge">
+        <div class="container">
+            <h2 class="section-title">The Challenge We Solve</h2>
+            <div class="challenge-content">
+                <div class="challenge-text">
+                    <h2>Technical Challenge</h2>
+                    <ul class="challenge-list">
+                        <li>DVB-S2X satellites use multiple modulation schemes (QPSK, BPSK, 16APSK, 32APSK) based on channel conditions</li>
+                        <li>Ground receivers must identify the correct modulation to establish synchronization</li>
+                        <li>Existing solutions are too complex, resource-intensive, and not future-proof</li>
+                        <li>Need for real-time detection without manual intervention</li>
+                    </ul>
+                </div>
+                <div class="solution-text">
+                    <h2>Our AMR Solution</h2>
+                    <ul class="solution-list">
+                        <li>Novel soft-decision AMR algorithm with DVB-S2X compliance</li>
+                        <li>Low computational complexity suitable for resource-constrained hardware</li>
+                        <li>Single unified algorithm handles all current and future DVB-S2X waveforms</li>
+                        <li>Real-time detection of modulation type, data rate, and signal parameters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section class="capabilities">
+        <div class="container">
+            <h2 class="section-title">Technical Capabilities</h2>
+            <div class="capabilities-grid">
+                <div class="capability-card fade-in">
+                    <h3>Modulation Support</h3>
+                    <p>QPSK, BPSK, 16APSK, 32APSK, and all DVB-S2X standard modulations</p>
+                </div>
+                <div class="capability-card fade-in delay-1">
+                    <h3>Real-Time Processing</h3>
+                    <p>Instant waveform detection and parameter estimation for live satellite feeds</p>
+                </div>
+                <div class="capability-card fade-in delay-2">
+                    <h3>Parameter Detection</h3>
+                    <p>Automatic recognition of data rate, code rate, and frame structure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2 class="section-title">Who Benefits</h2>
+            <div class="benefits-content">
+                <div>
+                    <ul class="benefits-list">
+                        <li>Software-Defined Radio (SDR) developers</li>
+                        <li>Satellite communication system integrators</li>
+                        <li>Ground station operators and providers</li>
+                        <li>Research institutions and universities</li>
+                        <li>Aerospace and defense contractors</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 40px; color: var(--accent);">Key Advantages</h3>
+                    <ul class="benefits-list">
+                        <li>DVB-S2X standard compliant</li>
+                        <li>Low computational complexity</li>
+                        <li>High detection accuracy</li>
+                        <li>Easy integration into existing SDR systems</li>
+                        <li>Future-proof architecture</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; color: var(--accent);">What We Deliver</h3>
+                    <div class="delivery-grid">
+                        <div class="delivery-card">
+                            <h3>Proof-of-Concept Tools</h3>
+                            <ul>
+                                <li>Working AMR algorithm implementation</li>
+                                <li>DVB-S2X waveform detection engine</li>
+                                <li>Real-time parameter estimation tools</li>
+                                <li>Integration APIs for SDR platforms</li>
+                            </ul>
+                        </div>
+                        <div class="delivery-card">
+                            <h3>Performance Features</h3>
+                            <ul>
+                                <li>Scalable to all DVB-S2X waveforms</li>
+                                <li>Adaptable for future signal standards</li>
+                                <li>Minimal hardware resource requirements</li>
+                                <li>Comprehensive documentation and support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founders Section -->
+    <section id="founders" class="founders">
+        <div class="container">
+            <h2 class="section-title">Founders</h2>
+            <div class="founders-grid">
+                <!-- Founder Card 1 -->
+                <div class="founder-card fade-in">
+                    <img src="/static/images/Nouhid.jpeg" alt="Nouhid Siddiqui" class="founder-img">
+                    <h3>NOUHID SIDDIQUI</h3>
+                    <p class="role">Tech Lead & Researcher</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/nouhid-siddiqui-a45705330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Founder Card 2 -->
+                <div class="founder-card fade-in delay-1">
+                    <img src="/static/images/Argadip.jpeg" alt="Arghadip Pan" class="founder-img">
+                    <h3>ARGHADIP PAN</h3>
+                    <p class="role">Researcher and Speaker</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/mr-arghadip-kr-pan-762b64383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Founder Card 3 -->
+                <div class="founder-card fade-in delay-2">
+                    <img src="/static/images/Priyanshu.jpeg" alt="Priyanshu Kumari" class="founder-img">
+                    <h3>PRIYANSHU KUMARI</h3>
+                    <p class="role">Co-Tech Lead</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/priyanshu-kumari-833708324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Founder Card 4 -->
+                <div class="founder-card fade-in delay-1">
+                    <img src="/static/images/Shivani.jpeg" alt="Shivani Kumari" class="founder-img">
+                    <h3>SHIVANI KUMARI</h3>
+                    <p class="role">FrontEnd Developer</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/shivani-kumari-a07a0a331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Founder Card 5 -->
+                <div class="founder-card fade-in delay-2">
+                    <img src="/static/images/Shreya.jpeg" alt="Shreya Shagun" class="founder-img">
+                    <h3>SHREYA SHAGUN</h3>
+                    <p class="role">Researcher & Speaker</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/shreya-shagun-947290310?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Founder Card 6 -->
+                <div class="founder-card fade-in delay-3">
+                    <img src="/static/images/Suman.jpeg" alt="Suman Kundu" class="founder-img">
+                    <h3>SUMAN KUNDU</h3>
+                    <p class="role">Marketing Specialist</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/suman-kundu-306071384?trk=contact-info" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact NextWave</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Contact our team for DVB-S2X algorithm consultations, technical support, or SDR development partnerships.</p>
+                    
+                    <div class="contact-details">
+                        <div>
+                            <i class="fas fa-envelope"></i>
+                            <p>nouhidsidd123@gmail.com</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone"></i>
+                            <p>+1 (555) 123-WAVE</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Technology Center, Innovation District</p>
+                        </div>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                        <p>Saturday: 10:00 AM - 4:00 PM</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <p>Fill out the form below and we'll get back to you soon.</p>
+                    
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" placeholder="Your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" placeholder="Your last name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NextWave</h3>
+                    <p>Creating innovative solutions for satellite and aerospace communication through advanced AI and signal processing.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#founders">About</a></li>
+                        <li><a href="#features">Technology</a></li>
+                        <li><a href="#benefits">Solutions</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Park, Innovation City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> nouhidsidd123@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 NextWave. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <button class="chatbot-button">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chatbot-window">
+            <div class="chatbot-header">
+                <h3><i class="fas fa-robot"></i> NextWave Assistant</h3>
+                <button class="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages">
+                <div class="message bot-message">
+                    Hi there! 👋 I'm Wave, your NextWave assistant. How can I help you today?
+                    <div class="quick-replies">
+                        <div class="quick-reply" data-message="What is NextWave?">What is NextWave?</div>
+                        <div class="quick-reply" data-message="Tell me about your technology">Your Technology</div>
+                        <div class="quick-reply" data-message="How can I contact you?">Contact Options</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message here..." id="chatbotInput">
+                <button id="sendMessage">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="voice-controls">
+                <button class="voice-btn" id="startListening">
+                    <i class="fas fa-microphone"></i> Speak
+                </button>
+                <button class="voice-btn" id="readAloud">
+                    <i class="fas fa-volume-up"></i> Read
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+
+</body>
+</html>
